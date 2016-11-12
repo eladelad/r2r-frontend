@@ -1,0 +1,9 @@
+<p>{{currentQuestion.description}}</p>
+<form (ngSubmit)="onSubmit()" [formGroup]="form">
+  <div *ngFor="let answer of currentQuestion.inputs" class="form-row">
+    <r2r-answer-input [answerInput]="answer" [form]="form"></r2r-answer-input>
+  </div>
+  <div class="form-row">
+    <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+  </div>
+</form>

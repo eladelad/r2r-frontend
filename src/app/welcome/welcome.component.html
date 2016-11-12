@@ -1,0 +1,65 @@
+<h1>Welcome!</h1>
+<div class="col-md-12" *ngIf="!termsAccepted">
+  <h4>Hi there, welcome to Bezeq International R&D Exam.</h4>
+  <p>Few words before we begin. This website is intended for people who wish to work at Bezeq International R&D department.
+  If you love technology, enjoy working on new challenges every day and into innovation, this is the place for you.
+  At our department we research, design, develop and deploy telecom and web application and services at various fields.
+  Part of the projects we do are:</p>
+  <ul>
+    <li>Working on BILABS, our innovation platoform (bilabs.co.il)</li>
+    <li>Developing the next CPEs for our customers</li>
+    <li>Launching new services for our customers, such as CyberWall, Private Backup, FixIT, VirtualNest, IPv6 and more</li>
+    <li>Taking part of the chief scientist consortiums</li>
+    <li>Recently setup the Hack It Out event - The first ever technology escape room</li>
+    <li>And many more</li>
+  </ul>
+  <p>If that's sound interesting to you, you'll only need to answer a few questions on this exam, and we'll contact you.</p>
+  <p>Make sure to agree to the terms & conditions <a href="#">here</a></p>
+  <p><input type="button" id="agree" value="I Agree! Let's do it" (click)="readTerms()"></p>
+
+</div>
+<div class="col-md-12" *ngIf="termsAccepted">
+  <p>Enter your details. The email and mobile number will help us get in touch with you. Please make sure they are correct.</p>
+
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm" >
+  <div ngModelGroup="userData">
+    <div class="form-group">
+      <label for="name">Full Name</label>
+      <input type="text"
+             class="form-control"
+             id="name"
+             [(ngModel)]="user.name"
+             name="name"
+             required>
+    </div>
+    <div class="form-group">
+      <label for="mobile">Mobile</label>
+      <input type="text"
+             class="form-control"
+             id="mobile"
+             [(ngModel)]="user.username"
+             name="mobile"
+             required
+             pattern="05[0-9]-?[0-9]{7}"
+             #mobile="ngModel">
+    </div>
+    <div *ngIf="!mobile.valid && !mobile.pristine">Invalid Mobile, should be in format 050-1234567 or 0501234567</div>
+    <div class="form-group">
+      <label for="email">E-Mail</label>
+      <input type="text"
+             class="form-control"
+             id="email"
+             [(ngModel)]="user.email"
+             name="email"
+             required
+             pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+             #email="ngModel">
+      <div *ngIf="!email.valid && !email.pristine">
+        Invalid email
+      </div>
+
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+</form>
+</div>

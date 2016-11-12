@@ -1,0 +1,8 @@
+<div [formGroup]="form">
+<label [attr.for]="answerInput.key">{{answerInput.text}}</label>
+<input [type]="answerInput.type"
+       [formControlName]="answerInput.key"
+       [id]="answerInput.key"
+       >
+  <div class="errorMessage" *ngIf="!isValid && !form.controls[answerInput.key].pristine">Answer is required</div>
+</div>

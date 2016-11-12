@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="col-md-5">
+    <r2r-steps-list (stepSelected)="currentStep = $event"></r2r-steps-list>
+  </div>
+  <div class="col-md-7">
+    <router-outlet></router-outlet>
+    <!--<r2r-steps-view [currentStep]="currentStep"></r2r-steps-view>-->
+  </div>
+</div>
